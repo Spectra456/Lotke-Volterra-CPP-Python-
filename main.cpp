@@ -55,13 +55,15 @@ int main() {
 
     ofstream foutx("outx.txt");
     ofstream fouty("outy.txt");
+    ofstream fouth("outh.txt");
 
-    while (i <= T_finish){
+    while (i < T_finish){
 
         foutx << x<<"," << "\n";
         fouty << y <<","<< "\n";
         runge_kutta(&x, &y, H, fx, fy);
         i+=H;
+        fouth << i << "," << "\n";
 
     }
     foutx.close();
