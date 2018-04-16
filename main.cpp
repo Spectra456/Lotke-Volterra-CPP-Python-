@@ -1,16 +1,25 @@
 #include <iostream>
 #include <fstream>
+#include <math.h>
 using namespace std;
 
 // первый вариант
-//#define X_init 300
-//#define Y_init 150
-
-// второй вариант
-#define X_init 150
+#define X_init 300
 #define Y_init 150
 
-#define H 0.5
+// второй вариант
+//#define X_init 150
+//#define Y_init 150
+
+// третий вариант
+//#define X_init 15
+//#define Y_init 22
+
+//четвертый вариант
+//#define X_init 2
+//#define Y_init 2
+
+#define H 0.01
 
 #define Alpha 2
 #define Beta 0.01
@@ -46,7 +55,7 @@ void runge_kutta(double *x, double *y, double h, double (*fx)(double, double),
 }
 
 int main() {
-    double xm[10000],ym[10000];
+    double xm[10000], ym[10000];
     double x, y;
     double i = T_start;
 
@@ -56,16 +65,34 @@ int main() {
     ofstream foutx("outx.txt");
     ofstream fouty("outy.txt");
     ofstream fouth("outh.txt");
+    ofstream foutxs("outxs.txt");
+    ofstream foutys("outys.txt");
+    ofstream fouths("ouths.txt");
+    int counter;
 
     while (i < T_finish){
+        if(counter%50==0){
+            foutxs <<x <<",\n";
+            foutys <<y <<",\n";
+            fouths <<i <<",\n";
 
-        foutx << x<<"," << "\n";
-        fouty << y <<","<< "\n";
+        }
+
+
+    //foutx << x<<", ";
+    //fouty << y <<", ";
+    foutx << x << ",\n";
+    fouty << y << ",\n";
+    fouth << i << "," << "\n";
+
         runge_kutta(&x, &y, H, fx, fy);
         i+=H;
-        fouth << i << "," << "\n";
+        counter++;
 
     }
+
+
+
     foutx.close();
     fouty.close();
     return 0;
