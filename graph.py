@@ -3,8 +3,7 @@ import scipy as sp
 import scipy.interpolate
 import matplotlib.pyplot as plt
 
-# Generate some random data
-#y = (np.random.random(10) - 0.5).cumsum()
+
 x = np.array([0,
               0.5,
               1,
@@ -28,50 +27,8 @@ x = np.array([0,
               10,])
 
 
-y=[300,
-   224.652,
-   65.1657,
-   24.2603,
-   16.5596,
-   18.0452,
-   26.7053,
-   47.5693,
-   93.1977,
-   183.485,
-   300.012,
-   224.619,
-   65.1525,
-   24.2576,
-   16.5592,
-   18.046,
-   26.7074,
-   47.5741,
-   93.208,
-   183.504,
-   300.024,]
-y1=[150,
-    384.889,
-    453.359,
-    334.862,
-    223.63,
-    147.491,
-    99.6913,
-    72.2949,
-    61.4659,
-    72.8194,
-    150.024,
-    384.927,
-    453.347,
-    334.842,
-    223.615,
-    147.482,
-    99.6855,
-    72.2919,
-    61.4656,
-    72.8242,
-    150.048,
-    ]
-# Interpolate the data using a cubic spline to "new_length" samples
+y=[2, 5.39367, 14.5893, 39.5296, 107.193, 290.611, 782.785, 929.426, 1.74904, 0.0305176, 0.0038758, 0.00164306, 0.00144702, 0.00198556, 0.00356539, 0.00753669, 0.0175884, 0.0435849, 0.112009, 0.294273, 0.783534, ]
+y1=[2, 1.23398, 0.783835, 0.538772, 0.45871, 0.697866, 5.09204, 913.557, 1281.35, 778.572, 472.255, 286.44, 173.736, 105.377, 63.9153, 38.7676, 23.5151, 14.2647, 8.6551, 5.25453, 3.195, ]
 new_length = 1000
 new_x = np.linspace(x.min(), x.max(), new_length)
 new_y = sp.interpolate.interp1d(x, y, kind='cubic')(new_x)
@@ -81,12 +38,12 @@ new_y1 = sp.interpolate.interp1d(x, y1, kind='cubic')(new_x)
 
 
 
-plt.plot(new_x,new_y, antialiased=True,linestyle = "-",color = "b") #Построение графика
+plt.plot(new_x,new_y, antialiased=True,linestyle = "-",color = "b")
 plt.plot(new_x,new_y1,antialiased=True,linestyle = "-",color = "r")
-plt.xlabel(r'$h$') #Метка по оси x в формате TeX
-plt.ylabel(r'$x/y$') #Метка по оси y в формате TeX
-plt.grid(True) #Сетка
-plt.show() #Показать
+plt.xlabel(r'$h$')
+plt.ylabel(r'$x/y$')
+plt.grid(True)
+plt.show()
 
 
 

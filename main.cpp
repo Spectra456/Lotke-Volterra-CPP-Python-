@@ -4,8 +4,8 @@
 using namespace std;
 
 // первый вариант
-#define X_init 300
-#define Y_init 150
+//#define X_init 300
+//#define Y_init 150
 
 // второй вариант
 //#define X_init 150
@@ -16,8 +16,8 @@ using namespace std;
 //#define Y_init 22
 
 //четвертый вариант
-//#define X_init 2
-//#define Y_init 2
+#define X_init 2
+#define Y_init 2
 
 #define H 0.01
 
@@ -72,18 +72,18 @@ int main() {
 
     while (i < T_finish){
         if(counter%50==0){
-            foutxs <<x <<",\n";
-            foutys <<y <<",\n";
-            fouths <<i <<",\n";
+            foutxs <<x <<", ";
+            foutys <<y <<", ";
+            fouths <<i <<", ";
 
         }
 
 
     //foutx << x<<", ";
     //fouty << y <<", ";
-    foutx << x << ",\n";
-    fouty << y << ",\n";
-    fouth << i << "," << "\n";
+    foutx << x << ",\n ";
+    fouty << y << ",\n ";
+    fouth << i << ",\n ";
 
         runge_kutta(&x, &y, H, fx, fy);
         i+=H;
